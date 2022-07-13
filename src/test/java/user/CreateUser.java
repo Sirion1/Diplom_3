@@ -44,19 +44,6 @@ public class CreateUser {
                 .then();
     }
 
-//    @Step("Авторизация юзера с емейлом и паролем")
-//    public static ValidatableResponse userLogIn(UserGetter build) {
-//        Map<String, String> dataMap = new HashMap<>();
-//        dataMap.put("email", newUser.getEmail());
-//        dataMap.put("password", newUser.getPassword());
-//        response = given()
-//                .spec(getRestAssureUser())
-//                .body(dataMap)
-//                .when()
-//                .log().all()
-//                .post("auth/login");
-//    }
-
     @Step("Авторизация юзера с емейлом и паролем для теста регистрации")
     public static ValidatableResponse userLogIn (UserDataForRegister build) {
         return given()
