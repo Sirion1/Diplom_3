@@ -1,0 +1,17 @@
+tests\ConstructorTest.class
+user\RestAssureUser.class
+pages\LoginPage.class
+user\UserUITest$UserUITestBuilder.class
+pages\RegisterPage.class
+user\UserGetter.class
+tests\LoginTest.class
+pages\MainPage.class
+tests\RegisterTest.class
+user\UserDataForRegister$UserDataForRegisterBuilder.class
+user\UserGetter$User.class
+pages\RestorePage.class
+user\UserUITest.class
+user\CreateUser.class
+tests\AccountPageTest.class
+pages\AccountPage.class
+user\UserDataForRegister.class
