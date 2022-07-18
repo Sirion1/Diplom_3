@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
@@ -46,7 +45,12 @@ public class MainPage {
     private SelenideElement fillingsType;
     @FindBy(how = How.XPATH, using = ".//h2[text()='Начинки']")
     private SelenideElement fillingsDetector;
+    @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']")
+    private static SelenideElement tabButtonActive;
 
+    public static boolean tabButtonActiveCorrect(String title) {
+        return tabButtonActive.getText().contentEquals(title);
+    }
     public LoginPage userBtnWithoutLogClick() {
         userlAccountBtn.click();
         return page(LoginPage.class);
@@ -73,41 +77,13 @@ public class MainPage {
         return this;
     }
 
-    @Step("Проверка видимости кнопки переключения типа ингредиентов")
-    public boolean ingredientTypeTabeVisible(int numberOfType) {
-        return ingredientMenuList.get(numberOfType)
-                .shouldBe(visible, Duration.ofSeconds(10)).is(visible);
-    }
-
-    @Step("Ожидание видимости переключателя таба ингредиентов и клик по вкладке")
-    public void setIngredientMenuListClick(int numberOfElement) {
-        ingredientList.get(numberOfElement)
-                .shouldBe(visible, Duration.ofSeconds(8)).shouldBe(visible).click();
-    }
-
     public boolean titlePageIsDisplayed() {
         return titlePage.shouldBe(visible).isDisplayed();
-    }
-
-    @Step("Выбрать вкладку булки")
-    public SelenideElement chooseBun() {
-        bunsType.click();
-        return bunsType;
-    }
-
-    @Step("Найти вкладку булки")
-    public SelenideElement getBun() {
-        return bunsType;
     }
 
     @Step("Выбрать вкладку соусы")
     public SelenideElement chooseSauce() {
         saucesType.click();
-        return saucesType;
-    }
-
-    @Step("Найти вкладку соусы")
-    public SelenideElement getSauce() {
         return saucesType;
     }
 
@@ -117,24 +93,4 @@ public class MainPage {
         return fillingsType;
     }
 
-    @Step("Проверка, что при клике на Булки появляются булки")
-    public boolean isVisiblTabOfBun() {
-        bunsType.click();
-        bunsDetected.shouldBe(Condition.visible);
-        return true;
-    }
-
-    @Step("Проверка, что при клике на Начинки появляются Начинки")
-    public boolean isVisiblTabOfFilling() {
-        fillingsType.click();
-        fillingsDetector.shouldBe(Condition.visible);
-        return true;
-    }
-
-    @Step ("Проверка, что при клике на Соусы появляются соусы")
-    public boolean isVisiblTabOSauces() {
-        saucesType.click();
-        saucesDetected.shouldBe(Condition.visible);
-        return true;
-        }
-    }
+}

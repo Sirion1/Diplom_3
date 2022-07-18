@@ -13,8 +13,8 @@ import pages.LoginPage;
 import pages.MainPage;
 import user.CreateUser;
 import user.UserUITest;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
+
+import static com.codeborne.selenide.Selenide.*;
 import static org.junit.Assert.assertTrue;
 
 public class AccountPageTest {
